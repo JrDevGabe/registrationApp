@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "studentportal-59946": {
+      "hosting": {
+        "registrationApp": [
+          "studentportal-59946"
+        ]
+      }
+    }
+  }
+}

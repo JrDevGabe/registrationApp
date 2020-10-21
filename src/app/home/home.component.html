@@ -1,0 +1,71 @@
+<section class="container" id="studentRegistration">
+    <h1 class="section-header display-3 text-capitalize">
+        Student Registration
+    </h1>
+    <article class="row mt-12 my-auto">
+        <div id="studentList" class="col-sm-5 border-right">
+            <table class="table table-responsive text-center mx-auto myauto">
+                <thead>
+                    <tr>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">View Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of studentInformation">
+                        <th scope="row">{{ item.studentName }} {{ item.studentSurname }}</th>
+                        <td>
+                            <a [routerLink]="['/profile', item.id]" (click)="adduserInfo(item)" class="btn btn-sm btn-outline-info">
+                              Edit
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="registrationForm" class="col-sm-6 mx-auto">
+            <form (ngSubmit)="createStudent()" #addStudent="ngForm">
+                <div class="row">
+                    <div class="form-group col-sm">
+                        <label for="studentName col-sm">First Name:</label>
+                        <input type="text" name="studentName" class="form-control" [(ngModel)]="studentData.studentName" required/>
+                        <small style="display: none;">validating input</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentSurname">Surname:</label>
+                        <input type="text" name="studentSurname" class="form-control" [(ngModel)]="studentData.studentSurname" required #studentSurname="ngModel" />
+                        <small style="display: none;">validating input</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentAddress">Address:</label>
+                    <textarea name="studentAddress" required class="form-control" [(ngModel)]="studentData.studentAddress" cols="30" rows="10"></textarea>
+                    <small style="display: none;">validating input</small>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm">
+                        <label for="studentPhone">Phone:</label>
+                        <input type="text" name="studentPhone" class="form-control" [(ngModel)]="studentData.studentPhone" required />
+                        <small style="display: none;">validating input</small>
+                    </div>
+                    <div class="form-group col-sm">
+                        <label for="studentCourse">Course:</label>
+                        <input type="text" class="" name="studentCourse" class="form-control" [(ngModel)]="studentData.studentCourse" required/>
+                        <small style="display: none;"></small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" [disabled]="!addStudent.form.valid" class="btn btn-lg btn-block btn-outline-primary">Register Student</button>
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-sucess">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </article>
+</section>
